@@ -7,7 +7,8 @@ COPY . ./
 RUN npm run build
 
 # Stage 2 - Serve the React app
-FROM nginx:stable-alpine
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+FROM node:16
+WORKDIR /app
+COPY --from=build /app/build ./build
+EXPOSE 3000
+CMD ["npx", "serve", "-s", "build", "-l", "3000"]
