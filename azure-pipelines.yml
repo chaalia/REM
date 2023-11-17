@@ -15,8 +15,8 @@ stages:
 - stage: Build
   displayName: Build image
   jobs:
-  - job: Build
-    displayName: Build
+  - job: BackendJob
+    displayName: BackendJob
     pool:
       vmImage: ubuntu-latest
     steps:
@@ -26,10 +26,10 @@ stages:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/backend/Dockerfile'
         tags: |
-          $(tag)
+          backend-$(tag)
 
-  - job: Build
-    displayName: Build
+  - job: FrontendJob
+    displayName: FrontendJob
     pool:
       vmImage: ubuntu-latest
     steps:
@@ -39,4 +39,4 @@ stages:
           command: build
           dockerfile: '$(Build.SourcesDirectory)/frontend/Dockerfile'
           tags: |
-            $(tag)
+            frontend-$(tag)
