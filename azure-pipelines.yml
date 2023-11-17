@@ -15,8 +15,8 @@ stages:
 - stage: Build
   displayName: Build image
   jobs:
-  - job: BackendJob
-    displayName: BackendJob
+  - job: Build
+    displayName: Build
     pool:
       vmImage: ubuntu-latest
     steps:
@@ -24,7 +24,7 @@ stages:
       displayName: Build an image
       inputs:
         command: build
-        dockerfile: '$(BackendJob.SourcesDirectory)/backend/Dockerfile'
+        dockerfile: '$(Build.SourcesDirectory)/backend/Dockerfile'
         tags: |
           $(tag)
 
