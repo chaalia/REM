@@ -28,15 +28,15 @@ stages:
         tags: |
           $(tag)
 
-  - job: FrontendJob
-    displayName: FrontendJob
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-      - task: Docker@2
-        displayName: Build an image
-        inputs:
-          command: build
-          dockerfile: '$(FrontendJob.SourcesDirectory)/frontend/Dockerfile'
-          tags: |
-            $(tag)
+#  - job: FrontendJob
+#    displayName: FrontendJob
+#    pool:
+#      vmImage: ubuntu-latest
+#    steps:
+#      - task: Docker@2
+#        displayName: Build an image
+#        inputs:
+#          command: build
+#          dockerfile: '$(FrontendJob.SourcesDirectory)/frontend/Dockerfile'
+#          tags: |
+#            $(tag)
